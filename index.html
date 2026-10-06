@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<title>داشبورد دلار و طلا</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#0b1220;color:#eef2ff}
+.wrap{max-width:980px;margin:auto;padding:22px}.hero{padding:25px 0;text-align:center}
+h1{margin:0 0 8px;font-size:28px}.muted{color:#aab4c8;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{background:#111a2b;border:1px solid #26334a;border-radius:18px;padding:20px;box-shadow:0 10px 30px #0004}
+.label{color:#aab4c8;font-size:14px}.price{font-size:30px;font-weight:800;margin:10px 0}.unit{font-size:12px;color:#94a3b8}
+.analysis{margin-top:14px;padding:12px;border-radius:12px;background:#172338;font-size:14px;line-height:1.8}
+.chart{margin-top:16px;background:#111a2b;border-radius:18px;padding:16px;overflow:hidden}
+canvas{width:100%;height:220px;display:block}footer{text-align:center;padding:25px;color:#77839a;font-size:12px}
+.badge{display:inline-block;padding:5px 9px;border-radius:99px;background:#172338;color:#cbd5e1;font-size:12px}
+</style></head><body><main class="wrap">
+<section class="hero"><h1>📊 داشبورد دلار و طلا</h1>
+<div class="muted">به‌روزرسانی خودکار با GitHub Actions</div></section>
+<section class="grid">
+<div class="card"><div class="label">💵 دلار</div><div class="price">270,685</div><div class="unit">تومان</div>
+<div class="analysis">داده کافی برای تحلیل وجود ندارد.</div></div>
+<div class="card"><div class="label">🪙 طلا</div><div class="price">نامشخص</div><div class="unit">تومان</div>
+<div class="analysis">داده کافی برای تحلیل وجود ندارد.</div></div>
+</section>
+<section class="chart"><div class="badge">روند ۴۸ ساعت اخیر</div><canvas id="c"></canvas></section>
+<footer>آخرین بروزرسانی: 2026-10-06T10:04:44+00:00 · منبع: itsyebekhe/usd · داده‌ها صرفاً اطلاعاتی هستند.</footer>
+</main>
+<script>
+const usd=[["2026-10-06T10:04:44+00:00", 270685.0]], gold=[];
+const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
+function draw(points){
+ const dpr=devicePixelRatio||1,w=canvas.clientWidth,h=220;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+ if(points.length<2){ctx.fillText('داده نمودار کافی نیست',20,30);return}
+ const ys=points.map(p=>p[1]),min=Math.min(...ys),max=Math.max(...ys),pad=(max-min||1)*.1;
+ ctx.beginPath();points.forEach((p,i)=>{let x=i*(w-20)/(points.length-1)+10,y=h-20-(p[1]-(min-pad))/(max-min+2*pad)*(h-40);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.strokeStyle='#60a5fa';ctx.lineWidth=2;ctx.stroke();
+}
+draw(usd.length?usd:gold);addEventListener('resize',()=>draw(usd.length?usd:gold));
+</script></body></html>
