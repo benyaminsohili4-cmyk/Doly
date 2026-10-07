@@ -18,16 +18,16 @@ canvas{width:100%;height:220px;display:block}footer{text-align:center;padding:25
 <section class="hero"><h1>📊 داشبورد دلار و طلا</h1>
 <div class="muted">به‌روزرسانی خودکار با GitHub Actions</div></section>
 <section class="grid">
-<div class="card"><div class="label">💵 دلار</div><div class="price">269,716</div><div class="unit">تومان</div>
-<div class="analysis">⚖️ روند خنثی؛ قیمت نزدیک میانگین اخیر است. تغییر این بازه: -0.36٪</div></div>
+<div class="card"><div class="label">💵 دلار</div><div class="price">269,686</div><div class="unit">تومان</div>
+<div class="analysis">⚖️ روند خنثی؛ قیمت نزدیک میانگین اخیر است. تغییر این بازه: -0.37٪</div></div>
 <div class="card"><div class="label">🪙 طلا</div><div class="price">نامشخص</div><div class="unit">تومان</div>
 <div class="analysis">داده کافی برای تحلیل وجود ندارد.</div></div>
 </section>
 <section class="chart"><div class="badge">روند ۴۸ ساعت اخیر</div><canvas id="c"></canvas></section>
-<footer>آخرین بروزرسانی: 2026-10-07T00:53:57+00:00 · منبع: itsyebekhe/usd · داده‌ها صرفاً اطلاعاتی هستند.</footer>
+<footer>آخرین بروزرسانی: 2026-10-07T06:49:10+00:00 · منبع: itsyebekhe/usd · داده‌ها صرفاً اطلاعاتی هستند.</footer>
 </main>
 <script>
-const usd=[["2026-10-06T10:04:44+00:00", 270685.0], ["2026-10-06T16:36:35+00:00", 270090.0], ["2026-10-06T21:25:49+00:00", 269708.0], ["2026-10-07T00:53:57+00:00", 269716.0]], gold=[];
+const usd=[["2026-10-06T10:04:44+00:00", 270685.0], ["2026-10-06T16:36:35+00:00", 270090.0], ["2026-10-06T21:25:49+00:00", 269708.0], ["2026-10-07T00:53:57+00:00", 269716.0], ["2026-10-07T06:49:10+00:00", 269686.0]], gold=[];
 const canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
 function draw(points){
  const dpr=devicePixelRatio||1,w=canvas.clientWidth,h=220;canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
